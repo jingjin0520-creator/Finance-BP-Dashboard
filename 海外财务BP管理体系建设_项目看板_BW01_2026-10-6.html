@@ -1,0 +1,1098 @@
+<!doctype html>\n<html lang="zh-CN"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>海外财务BP管理体系建设｜项目看板</title>
+<style>
+:root{
+  --bg:#f4f6fa; --panel:#fff; --ink:#1d2939; --muted:#5d6779; --line:#e4e7ec;
+  --navy:#17345f; --blue:#2f5e9f; --blue-soft:#edf4ff;
+  --amber:#8f5400; --amber-soft:#fff5df; --green:#147a57; --green-soft:#eaf8f2;
+  --red:#b42318; --red-soft:#fff0ee; --purple:#6941c6; --purple-soft:#f4f0ff; --grey:#f2f4f7;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-size:14px;
+  font-family:"PingFang SC","Microsoft YaHei","Noto Sans SC",Arial,sans-serif;line-height:1.58}
+.wrap{max-width:1300px;margin:0 auto;padding:28px 30px 56px}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,#153158,#2c568f 66%,#4a74aa);color:#fff;border-radius:20px;
+  padding:30px 34px;box-shadow:0 14px 34px rgba(23,52,95,.14)}
+.hero h1{margin:0 0 9px;font-size:29px}
+.hero p{margin:0;color:rgba(255,255,255,.85);font-size:14px;max-width:80ch;line-height:1.7}
+.meta{display:flex;gap:9px;flex-wrap:wrap;margin-top:18px}
+.meta span{font-size:12px;padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.14)}
+.meta span b{font-weight:600}
+
+.section{margin-top:28px}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;margin-bottom:13px;flex-wrap:wrap}
+.section-head h2{margin:0;font-size:20px;color:#1f355a}
+.section-note{font-size:12px;color:var(--muted)}
+
+/* 一、框架 */
+.framework{display:grid;grid-template-columns:1fr 50px 1fr 50px 1fr;gap:10px;align-items:stretch}
+.stage{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;box-shadow:0 5px 18px rgba(31,53,90,.04)}
+.stage-kicker{font-size:11.5px;color:#98a2b3;font-weight:700;letter-spacing:.6px}
+.stage h3{margin:5px 0 4px;font-size:17px;color:var(--navy)}
+.stage>p{margin:0 0 12px;font-size:12px;color:var(--muted);line-height:1.6}
+.mini-list{display:grid;gap:9px}
+.mini{background:#f8fafc;border:1px solid #edf0f5;border-radius:11px;padding:10px 11px}
+.mini-top{display:flex;gap:8px;align-items:flex-start}
+.mini-name{font-size:13.5px;font-weight:700;color:#253858;flex:1}
+.mini ul{margin:8px 0 0;padding:0;list-style:none}
+.mini li{font-size:12px;color:var(--muted);line-height:1.6;padding:2.5px 0;display:flex;gap:7px}
+.mini li .tid{color:#98a2b3;font-weight:600;font-size:11.5px;flex:0 0 auto}
+.mini li.hot{color:#8a3a12;font-weight:600}
+.mini li.hot .tid{color:var(--red)}
+.arr{display:flex;align-items:center;justify-content:center}
+.arr span{width:36px;height:36px;border-radius:50%;background:#eaf0f8;color:var(--blue);
+  display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:700}
+.horizontal-title{font-size:12.5px;font-weight:700;color:#475467;margin:20px 0 9px}
+.horizontal{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hcard{background:#fff;border:1px solid var(--line);border-radius:13px;padding:14px 15px}
+
+/* 标签 */
+.tag{display:inline-block;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.p0{background:var(--red-soft);color:var(--red)}
+.p1{background:var(--amber-soft);color:var(--amber)}
+.p2{background:var(--grey);color:#475467}
+.status{display:inline-block;border-radius:999px;padding:3px 9px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.st-live{background:var(--amber-soft);color:var(--amber)}
+.st-idle{background:var(--grey);color:#475467}
+.st-done{background:var(--green-soft);color:var(--green)}
+.st-block{background:var(--red-soft);color:var(--red)}
+.legend{font-size:12px;color:var(--muted)}
+.legend .tag,.legend .status{margin-left:2px}
+
+/* 二、第一阶段重点 */
+.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.phase-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0;overflow:hidden;
+  box-shadow:0 4px 14px rgba(31,53,90,.035);display:flex;flex-direction:column}
+.phase-bar{height:4px}
+.phase-in{padding:16px 18px 15px;flex:1;display:flex;flex-direction:column}
+.phase-top{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:9px}
+.phase-type{font-size:11px;font-weight:700;color:#98a2b3;letter-spacing:.4px}
+.phase-card h3{margin:0 0 3px;font-size:16px;color:var(--navy)}
+.phase-action{font-size:12.5px;color:var(--blue);font-weight:600;margin-bottom:10px}
+.phase-row{display:grid;grid-template-columns:74px 1fr;gap:10px;margin-top:7px}
+.phase-label{font-size:12px;font-weight:700;color:#667085}
+.phase-value{font-size:12.5px;color:#344054;line-height:1.7}
+.phase-bottom{display:flex;gap:8px;flex-wrap:wrap;margin-top:13px;padding-top:12px;border-top:1px dashed var(--line)}
+.chip{font-size:12px;padding:4px 10px;border-radius:999px;background:#f2f4f7;color:#475467}
+.chip.hot{background:var(--red-soft);color:var(--red);font-weight:600}
+.parallel{margin-top:13px;background:#fff;border:1px dashed #d8dee8;border-radius:12px;padding:12px 15px;
+  font-size:12.5px;color:var(--muted);line-height:1.7}
+.parallel b{color:var(--navy)}
+
+/* 三、双周更新 */
+.bi-box{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 4px 14px rgba(31,53,90,.035)}
+.bi-head{padding:15px 18px 13px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff,#fbfcfe)}
+.bi-title{font-size:16px;font-weight:700;color:var(--navy)}
+.bi-meta{font-size:12px;color:var(--muted);margin-top:3px}
+.needs{margin:0;padding:14px 18px;background:var(--red-soft);border-bottom:1px solid #f3d3cf}
+.needs-t{font-size:12px;font-weight:700;color:var(--red);margin-bottom:7px}
+.needs ul{margin:0;padding:0;list-style:none}
+.needs li{font-size:12.5px;color:#6b4a46;line-height:1.7;padding:2px 0}
+.needs li b{color:#7f1d16}
+.bi-wrap{overflow-x:auto}
+
+/* 四、明细（可折叠） */
+.detail-shell{background:#fff;border:1px solid var(--line);border-radius:16px;padding:0 20px;box-shadow:0 4px 14px rgba(31,53,90,.035)}
+.detail-shell>summary{cursor:pointer;list-style:none;padding:16px 0;font-size:15px;font-weight:700;color:var(--navy);
+  display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.detail-shell>summary::-webkit-details-marker{display:none}
+.detail-shell>summary .hint{font-size:12px;font-weight:400;color:var(--muted)}
+.detail-shell>summary::before{content:"▸ ";color:#98a2b3}
+.detail-shell[open]>summary::before{content:"▾ "}
+.detail-inner{padding:0 0 22px}
+.toolbar{display:flex;gap:7px;flex-wrap:wrap;margin:4px 0 16px}
+.filter{border:1px solid #d8dee8;background:#fff;color:#475467;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer;font-family:inherit}
+.filter.active{background:var(--navy);border-color:var(--navy);color:#fff}
+.detail-group{margin-top:22px}
+.group-title{font-size:16px;font-weight:700;color:#1f355a}
+.group-desc{font-size:12px;color:var(--muted);margin-top:2px}
+.module-card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:12px}
+.module-head{display:flex;justify-content:space-between;gap:18px;padding:14px 16px 12px;border-bottom:1px solid var(--line);background:#fbfcfe}
+.module-title{font-size:14.5px;font-weight:700;color:var(--navy)}
+.issue-label{font-size:11px;font-weight:700;color:#98a2b3;margin-top:7px;letter-spacing:.3px}
+.issue{font-size:12.5px;color:#475467;margin-top:3px;line-height:1.7}
+.count-badge{font-size:11.5px;color:#475467;background:#f2f4f7;padding:4px 9px;border-radius:999px;white-space:nowrap;height:max-content}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:960px}
+th{background:#f8fafc;color:#475467;font-size:12px;text-align:left;padding:9px 11px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{font-size:12.5px;padding:11px;border-bottom:1px solid #edf0f5;vertical-align:top;line-height:1.7}
+tr:last-child td{border-bottom:none}
+.theme{width:210px;font-weight:650;color:#253858}
+.next{width:290px;color:#344054}
+.owner{width:150px}
+.pace{width:110px;color:var(--muted)}
+.status-cell{width:96px}
+.bi-table th,.bi-table td{font-size:12.5px}
+.bi-table{min-width:1000px}
+
+/* 控制台 */
+.console{margin-top:30px;background:#fff;border:1px dashed #c9d3e2;border-radius:14px;padding:0 20px}
+.console>summary{cursor:pointer;list-style:none;padding:15px 0;font-size:13.5px;font-weight:600;color:var(--navy)}
+.console>summary::-webkit-details-marker{display:none}
+.console>summary::before{content:"⚙  ";color:#98a2b3}
+.console-in{padding:0 0 20px}
+.console ol{font-size:12.5px;color:var(--muted);line-height:1.9;margin:0 0 14px;padding-left:22px}
+.fields{display:grid;grid-template-columns:130px 150px 1fr;gap:10px;margin-bottom:14px}
+.fields input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 11px;font-size:12.5px;font-family:inherit}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid3 label{display:block;font-size:12px;font-weight:600;color:#475467;margin-bottom:5px}
+.grid3 textarea{width:100%;height:120px;border:1px solid var(--line);border-radius:9px;padding:9px 10px;
+  font-family:ui-monospace,Consolas,monospace;font-size:11.5px;resize:vertical;background:#fcfdff}
+.actions{margin-top:14px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.btn{border:0;border-radius:9px;padding:10px 18px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--navy);color:#fff}
+.btn-ghost{background:var(--grey);color:#475467}
+.msg{font-size:12.5px}
+.msg.ok{color:var(--green)}
+.msg.err{color:var(--red)}
+
+@media (max-width:1120px){
+  .framework{grid-template-columns:1fr;gap:10px}
+  .arr span{transform:rotate(90deg)}
+  .phase-grid{grid-template-columns:1fr}
+  .horizontal,.grid3,.fields{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .wrap{padding:18px 16px 44px}
+  .hero{padding:22px 20px;border-radius:14px}
+  .hero h1{font-size:23px}
+}
+@media print{
+  body{background:#fff}
+  .wrap{max-width:none;padding:0}
+  .console,.toolbar{display:none}
+  .hero{border-radius:0}
+  .detail-shell{border:0;padding:0}
+  .detail-shell>summary{display:none}
+  .detail-inner{padding:0}
+  .section,.stage,.phase-card,.module-card{break-inside:avoid}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+
+/* ==================== 项目推进明细：三档分界 ==================== */
+/* 第一档（最重）：层级之间 */
+.detail-inner .detail-group{margin-top:38px;padding-top:22px;border-top:2px solid #dbe3ee}
+.detail-inner .detail-group:first-of-type{margin-top:6px;padding-top:0;border-top:none}
+.detail-group>.group-title{font-size:17px;letter-spacing:-.2px}
+.detail-group>.group-title::before{content:"";display:inline-block;width:5px;height:15px;border-radius:2px;
+  margin-right:9px;vertical-align:-2px;background:#8f5400}
+.detail-group.lv1>.group-title::before{background:#315f9d}
+.detail-group.lv2>.group-title::before{background:#6941c6}
+.detail-group.lv3>.group-title::before{background:#147a57}
+.detail-group>.group-desc{margin-left:14px;margin-bottom:4px}
+
+/* 第二档：模块之间 —— 间距加倍 + 卡片浮起 + 左侧层级色条 */
+.detail-inner .module-card{margin-top:22px;border:1px solid #d9e0ea;border-radius:14px;
+  box-shadow:0 5px 16px rgba(31,53,90,.07)}
+.detail-inner .detail-group>.module-card:first-of-type{margin-top:12px}
+.module-card>.module-head{background:#eaf0f7;border-bottom:2px solid #ccd8e6;padding:14px 16px 13px;
+  box-shadow:inset 5px 0 0 #8f5400}
+.module-card.lv1>.module-head{box-shadow:inset 5px 0 0 #315f9d}
+.module-card.lv2>.module-head{box-shadow:inset 5px 0 0 #6941c6}
+.module-card.lv3>.module-head{box-shadow:inset 5px 0 0 #147a57}
+.module-card .module-title{font-size:15.5px}
+.module-card .issue-label{color:#8a97a8;margin-top:9px}
+.module-card .issue{color:#4a5462}
+.module-card .count-badge{background:#fff;border:1px solid #ccd8e6;color:#3d4c60;font-weight:600}
+
+/* 第三档（最轻）：表头压淡，让模块头成为视觉重心 */
+.module-card thead th{background:#fbfcfe;color:#96a2b1;font-size:11.6px;border-bottom:1px solid #eef1f5}
+.module-card tbody tr+tr td{border-top:none}
+
+@media print{
+  .detail-inner .detail-group{border-top:2px solid #dbe3ee}
+  .detail-inner .module-card{box-shadow:none;border:1px solid #ccd8e6;margin-top:16px}
+}
+
+
+/* ---- Hero 两行总述 ---- */
+.hero h1{line-height:1.3}
+.hero p.hero-lead{max-width:none;font-size:14.2px;line-height:1.8}
+.hero p.hero-lead .lead-line{display:block;white-space:nowrap}
+.hero p.hero-lead .lead-line+.lead-line{margin-top:3px}
+@media (max-width:980px){
+  .hero p.hero-lead .lead-line{white-space:normal}
+}
+
+
+.phase-shell .detail-inner{padding-top:2px}
+.phase-shell .phase-grid{padding-bottom:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div id="board">
+    <section class="hero">
+      <h1>海外财务BP管理体系建设｜项目看板</h1>
+      <p class="hero-lead"><span class="lead-line">以「基础财务治理 → 专业职能协同 → 业务与经营管理」三层能力递进为主线，逐步完善海外财务BP管理体系。</span><span class="lead-line">横向通过 Country Deep Dive、Finance BP 专题分享及系统工具优化持续沉淀，推动标准化、知识复用与效率提升。</span></p>
+      <div class="meta">
+        <span>期次 <b>BW01</b></span>
+        <span>更新至 <b>2026-10-6</b></span>
+        <span>纵向 <b>7</b> 模块 + 横向 <b>3</b> 机制</span>
+        <span>管理主题 <b>20</b> 个</span>
+        <span>进行中 <b>8</b> 个</span>
+        <span>本阶段重点 <b>7</b> 项</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>一、整体建设框架</h2>
+        <div class="legend">纵向能力递进，横向机制贯穿三层　|　<span class="tag p0">P0</span><span class="tag p1">P1</span><span class="tag p2">P2</span>　<span style="color:#b42318;font-weight:700">★</span> 第一阶段涉及主题</div>
+      </div>
+      <div class="framework"><div class="stage">
+      <div class="stage-kicker">第一层</div>
+      <h3>基础财务治理</h3><p>先建立统一、稳定、可复制的财务管理底座</p>
+      <div class="mini-list">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">1. 财务治理与组织</div><span class="tag p1">P1</span></div>
+      <ul><li class=""><span class="tid">1.1</span><span>业务国财务管理及职能协作机制</span></li><li class=""><span class="tid">1.2</span><span>Country Backup及知识交接管理</span></li></ul>
+    </div>
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">2. 会计核算与财务报告</div><span class="tag p1">P1</span></div>
+      <ul><li class="hot"><span class="tid">2.1</span><span>集团核算原则及Country差异管理 ★</span></li><li class=""><span class="tid">2.2</span><span>月结及财务报告复核机制</span></li></ul>
+    </div>
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">3. 财务基础内控与运营规范</div><span class="tag p0">P0</span></div>
+      <ul><li class="hot"><span class="tid">3.1</span><span>开票及票据管理 ★</span></li><li class="hot"><span class="tid">3.2</span><span>供应商、付款及费用管理 ★</span></li><li class="hot"><span class="tid">3.3</span><span>关联方及跨境往来管理 ★</span></li><li class=""><span class="tid">3.4</span><span>例外事项及财务档案管理</span></li></ul>
+    </div></div>
+    </div><div class="arr"><span>→</span></div><div class="stage">
+      <div class="stage-kicker">第二层</div>
+      <h3>专业职能协同</h3><p>在基础治理之上理顺 Finance BP 与专业职能的职责和接口</p>
+      <div class="mini-list">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">4. 资金及通道管理</div><span class="tag p0">P0</span></div>
+      <ul><li class="hot"><span class="tid">4.1</span><span>业务通道现状梳理及职责交接 ★</span></li><li class=""><span class="tid">4.2</span><span>业务通道资金管理机制</span></li></ul>
+    </div>
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">5. 税务与法定合规</div><span class="tag p2">P2</span></div>
+      <ul><li class=""><span class="tid">5.1</span><span>税务及合规协作</span></li><li class=""><span class="tid">5.2</span><span>业务税务评审</span></li><li class=""><span class="tid">5.3</span><span>重大税务及监管事项管理</span></li></ul>
+    </div></div>
+    </div><div class="arr"><span>→</span></div><div class="stage">
+      <div class="stage-kicker">第三层</div>
+      <h3>业务与经营管理</h3><p>逐步从事务响应转向 Business Partner、预测和经营分析</p>
+      <div class="mini-list">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">6. 业务协同与重大经营事项财务评审</div><span class="tag p1">P1</span></div>
+      <ul><li class=""><span class="tid">6.1</span><span>跨部门财务协作及介入机制</span></li><li class=""><span class="tid">6.2</span><span>新业务及重大经营事项财务评审</span></li></ul>
+    </div>
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">7. 预算预测与经营分析</div><span class="tag p2">P2</span></div>
+      <ul><li class="hot"><span class="tid">7.1</span><span>成本分析体系 ★</span></li><li class=""><span class="tid">7.2</span><span>预测及管理报告机制</span></li></ul>
+    </div></div>
+    </div></div>
+      
+    <div class="horizontal-title">横向运营机制｜贯穿三层能力建设</div>
+    <div class="horizontal"><div class="hcard">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">8. 业务国财务专题分享 / Country Deep Dive</div><span class="tag p1">P1</span></div>
+      <ul><li class="hot"><span class="tid">8.1</span><span>Country Deep Dive ★</span></li></ul>
+    </div></div><div class="hcard">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">9. Finance BP专项专题分享</div><span class="tag p2">P2</span></div>
+      <ul><li class=""><span class="tid">9.1</span><span>Finance BP专题分享及案例沉淀</span></li></ul>
+    </div></div><div class="hcard">
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">10. 财务系统及工具专项优化</div><span class="tag p1">P1</span></div>
+      <ul><li class="hot"><span class="tid">10.1</span><span>财务系统及工具优化管理 ★</span></li></ul>
+    </div></div></div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>二、第一阶段推进计划（基准计划）</h2>
+        <div class="section-note">已明确第一阶段重点事项、Owner及目标节奏；后续仅在基准计划发生变化时调整</div>
+      </div>
+      <details class="detail-shell phase-shell">
+        <summary>点击展开查看第一阶段基准计划<span class="hint">共 7 项重点事项</span></summary>
+        <div class="detail-inner">
+          <div class="phase-grid"><div class="phase-card">
+      <div class="phase-bar" style="background:#b42318"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">纵向模块 · 3.1 / 3.2</span> <span class="tag p0">P0</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>开票、供应商及付款管理</h3>
+        <div class="phase-action">财务基础内控与运营规范</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">已从与BD的日常交互中识别出各Country在开票时点、付款申请节点、付款节奏及资料要求上的差异。</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">逐国梳理现状，明确开票与付款的触发、申请人、时限、资料要求及紧急付款处理，形成第一版集团最低控制要求。</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：Bella</span><span class="chip hot">10月出具相关管理制度</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#b42318"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">纵向模块 · 3.3</span> <span class="tag p1">P1</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>关联方及跨境往来管理</h3>
+        <div class="phase-action">财务基础内控与运营规范</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">各业务国跨境撤资较为频繁，一直都是单次沟通，缺少统一的制度要求</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">梳理各业务国场景，结合香港及新加坡税筹情况，形成基础管理原则</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：Rufus</span><span class="chip hot">10月形成一版管理原则</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#8f5400"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">纵向模块 · 2.1</span> <span class="tag p1">P1</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>集团核算原则及业务国差异梳理</h3>
+        <div class="phase-action">会计核算与财务报告</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">各Country已有核算SOP，但核心处理仍有差异，历史规则也需重新确认。</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">横向Review现有SOP，形成核心场景差异清单，并区分集团必须统一 / Country合理差异 / 历史规则待更新三类。</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：董艳</span><span class="chip hot">10月统一一版核算整体原则</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#2f5e9f"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">纵向模块 · 4.1</span> <span class="tag p0">P0</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>业务通道现状梳理及BIZ→BP交接</h3>
+        <div class="phase-action">资金及通道管理</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">各Country通道清单、余额管理方式、充值逻辑、预测方法及数据来源尚未形成统一视图，交接范围和节奏待定。</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">按Country盘点通道现状并形成统一视图；同步理解BIZ现有预测逻辑，分国逐步完成职责交接。</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：张堉</span><span class="chip hot">持续交接中</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#147a57"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">纵向模块 · 7.1</span> <span class="tag p1">P1</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>成本分析体系</h3>
+        <div class="phase-action">预算预测与经营分析</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">已开通各国BI成本报表以及系统权限</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">进一步针对部分成本项开展分析</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：王颖</span><span class="chip hot">已启动</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#6941c6"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">横向机制 · 8.1</span> <span class="tag p1">P1</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>统一模板及首批业务国分享</h3>
+        <div class="phase-action">业务国财务专题分享 / Country Deep Dive</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">各Country业务、财务运营、资金通道、税务监管及历史问题仍集中在对应BP个人手中，团队缺少横向认知。</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">先确定统一Deep Dive模板与5个业务国分享顺序，启动首个Country分享，并沉淀为可持续更新的知识库。</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：Bella统筹 / Finance BP</span><span class="chip hot">10月启动，每2周1个Country</span></div>
+      </div>
+    </div><div class="phase-card">
+      <div class="phase-bar" style="background:#b42318"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">横向机制 · 10.1</span> <span class="tag p1">P1</span></div>
+          <span class="status st-live">进行中</span>
+        </div>
+        <h3>重启财务系统及流程优化需求</h3>
+        <div class="phase-action">财务系统及工具优化管理</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">目前已提出的财务系统及流程优化需求受研发资源限制搁置</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">重新盘点目前已有需求，按照重点及难易程度与研发部门统一对接排期</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：陈媛</span><span class="chip hot">9月重新启动</span></div>
+      </div>
+    </div></div>
+        </div>
+      </details>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>三、最新双周进展</h2>
+        <div class="section-note">只展示最新一期需要同步至看板的关键进展；历史记录保留在 Excel 中</div>
+      </div>
+      <div class="bi-box">
+        <div class="bi-head">
+          <div class="bi-title">最新双周更新</div>
+          <div class="bi-meta">更新时间：2026-10-6</div>
+        </div>
+        
+    
+    <div class="needs">
+      <div class="needs-t">需协同 / 待确认（2 项）</div>
+      <ul><li><b>各国核算SOP复核及差异清单</b>　需要业务国BP填写核算规则　<span style="color:#98564f">— 董艳</span></li><li><b>业务通道梳理</b>　各业务国BP各自梳理原则　<span style="color:#98564f">— 张堉</span></li></ul>
+    </div>
+    <div class="bi-wrap"><table class="bi-table">
+      <thead><tr><th>重点模块 / Action</th><th>本双周完成 / 关键进展</th><th>下双周计划</th><th>Owner</th><th>Status</th></tr></thead>
+      <tbody><tr>
+        <td><b>财务基础内控与运营规范</b><br><span style="color:#667085">开票、供应商及付款管理</span></td>
+        <td>目前已完成各国开票合规要求及付款流程梳理，厘清各业务国目前付款过程存在的问题</td><td>根据各业务国现状，输出关于付款管理统一的内控方案，形成发票和付款的基本制度输出给各使用方</td><td>Bella</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>财务基础内控与运营规范</b><br><span style="color:#667085">关联方及跨境往来管理</span></td>
+        <td>目前已开启关联方往来梳理，对香港及BVI之间的关联方往来建账进行了统计，拟出了26年的期初数</td><td>跟进关联方数据的整理，将新加坡关联方的期初数整理清楚。同步开启netsuite系统中的关联方的setup，以及业务国主体的应收应付整理工作</td><td>Rufus</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>会计核算与财务报告</b><br><span style="color:#667085">各国核算SOP复核及差异清单</span></td>
+        <td>已完成科目映射及集团核算规则初稿</td><td>向各业务国收集核算规则差异</td><td>董艳</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>资金及通道管理</b><br><span style="color:#667085">业务通道梳理</span></td>
+        <td>目前各业务国通道按周度进行撤资及充值，各业务国优先梳理充值能力（路径、额度、时效）以及本地银行账户可承接资金量级</td><td>各业务国形成各自的本地通道资金规则</td><td>张堉</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>预算预测与经营分析</b><br><span style="color:#667085">成本分析体系</span></td>
+        <td>后台数据权限已完成开通</td><td>预计10月中旬起开始进行成本分析动作</td><td>王颖</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>业务国财务专题分享</b><br><span style="color:#667085">统一模板及首批Country分享</span></td>
+        <td>已完成业务国分享排期以及分享重点内容沟通</td><td>10.14菲律宾做首个业务国分享，后续每两周分享一个业务国</td><td>Bella统筹 / Finance BP</td>
+        <td><span class="status st-live">进行中</span></td></tr><tr>
+        <td><b>财务系统及工具优化管理</b><br><span style="color:#667085">重启财务系统及流程优化需求</span></td>
+        <td>受开发资源限制，近期策略以优先保障线上稳定性、修复 Bug 为主。 9月29日已完成退还款流程修复，已恢复正常查看</td><td>10月交付：成本报表异步下载优化、发票/流水明细显示优化及欠票管理流程； 11月推进成本报表数据改造与固定资产模块"</td><td>陈媛</td>
+        <td><span class="status st-live">进行中</span></td></tr></tbody>
+    </table></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>四、项目推进明细</h2>
+        <div class="section-note">共性问题只保留背景，不放单个 Case；每期不一定变动，默认收起</div>
+      </div>
+      <details class="detail-shell">
+        <summary>展开全部 20 个管理主题<span class="hint">按层级与模块分组，含涵盖内容、下一步、Owner、节奏与状态</span></summary>
+        <div class="detail-inner">
+          <div class="toolbar">
+            <button class="filter active" data-filter="all">全部状态</button>
+            <button class="filter" data-filter="进行中">进行中</button>
+            <button class="filter" data-filter="未启动">未启动</button>
+            <button class="filter" data-filter="已完成">已完成</button>
+            <button class="filter" data-filter="受阻">受阻</button>
+          </div>
+          <section class="detail-group lv1">
+        <div class="group-title">基础财务治理</div><div class="group-desc">先建立统一、稳定、可复制的财务管理底座</div>
+        
+          <section class="module-card lv1">
+            <div class="module-head">
+              <div>
+                <div class="module-title">1. 财务治理与组织</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">各Country本地化程度、Local Finance能力及系统成熟度差异较大，BP实际介入深度不一致；Tax、Treasury共享化后，Country财务管理责任及跨团队协作方式需要重新明确。</div>
+              </div>
+              <div class="count-badge">2 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="未启动">
+                <td class="theme">1.1 业务国财务管理及职能协作机制</td>
+                <td>BP对业务国财务结果的管理责任；不同成熟度业务国的BP介入模式；BP、Local Finance、Tax、Treasury、报表组的职责边界及协作场景。</td><td class="next">盘点各业务国团队配置、BP实际介入事项及跨团队协作场景，输出Country Finance Management Model及职责分工表。</td>
+                <td class="owner">Finance BP</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr><tr data-status="未启动">
+                <td class="theme">1.2 Country Backup及知识交接管理</td>
+                <td>建立Country Backup、关键事项交接、历史问题留存及知识沉淀机制，减少业务国信息集中在单一BP或Local Finance个人手中。</td><td class="next">依赖8.1 Deep Dive模板落地后同步设计，本阶段不单独启动。</td>
+                <td class="owner">Finance BP</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lv1">
+            <div class="module-head">
+              <div>
+                <div class="module-title">2. 会计核算与财务报告</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">各Country已有核算SOP，但部分历史规则、同类业务处理及月结Review方式仍有差异；集团层面的统一原则与Country-specific处理边界尚未明确。</div>
+              </div>
+              <div class="count-badge">2 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">2.1 集团核算原则及Country差异管理 <span style="color:#b42318">★</span></td>
+                <td>收入、成本、预提、应付款冲销、差异调整等核心场景的核算口径；集团统一原则与业务国合理差异的边界；历史规则待更新清单。</td><td class="next">汇总各业务国核算原则，输出核心场景差异清单及第一版集团统一核算原则。</td>
+                <td class="owner">董艳/报表组</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="未启动">
+                <td class="theme">2.2 月结及财务报告复核机制</td>
+                <td>月结时间表及分工；报表出具与复核；重点科目及异常事项的BP Review范围。</td><td class="next">依赖2.1统一核算原则成型后补充，本阶段不单独启动。</td>
+                <td class="owner">Finance BP / 报表组</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lv1">
+            <div class="module-head">
+              <div>
+                <div class="module-title">3. 财务基础内控与运营规范</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">各业务国在开票、供应商及付款、跨境往来、例外事项及财务档案方面，执行频率、完成时限、资料和审批要求尚未完全统一。后续随时补充。</div>
+              </div>
+              <div class="count-badge">4 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">3.1 开票及票据管理 <span style="color:#b42318">★</span></td>
+                <td>开票触发、申请人、时点、资料、欠票、红冲/重开及异常事项处理。</td><td class="next">优先与BD及各业务国BP梳理现状和差异，形成第一版最低控制要求。</td>
+                <td class="owner">Bella</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="进行中">
+                <td class="theme">3.2 供应商、付款及费用管理 <span style="color:#b42318">★</span></td>
+                <td>供应商基础资料、付款申请材料、付款发起节点、固定付款节奏、紧急付款及费用类最低控制标准。</td><td class="next">与BD梳理各业务国付款流程及实际问题，明确集团最低标准和Country差异。</td>
+                <td class="owner">Bella</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="进行中">
+                <td class="theme">3.3 关联方及跨境往来管理 <span style="color:#b42318">★</span></td>
+                <td>关联方余额及对账；代付；集团借款；跨境结算资料；Tax与Treasury触发要求。</td><td class="next">梳理各业务国现有场景，形成基础管理原则及专业团队触发机制。</td>
+                <td class="owner">Rufus</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="未启动">
+                <td class="theme">3.4 例外事项及财务档案管理</td>
+                <td>紧急/无票付款、迟交资料、历史调整等例外事项审批和财务资料归档、留痕要求。</td><td class="next">汇总各业务国现有例外场景，形成统一Exception及Documentation最低标准。</td>
+                <td class="owner">Finance BP</td><td class="pace">11月</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+      </section><section class="detail-group lv2">
+        <div class="group-title">专业职能协同</div><div class="group-desc">在基础治理之上理顺 Finance BP 与专业职能的职责和接口</div>
+        
+          <section class="module-card lv2">
+            <div class="module-head">
+              <div>
+                <div class="module-title">4. 资金及通道管理</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">银行侧事宜管理已转为资金团队负责，通道的资金管控拟由BIZ逐步转交BP，目前各Country现状和预测逻辑仍在持续梳理中。</div>
+              </div>
+              <div class="count-badge">2 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">4.1 业务通道现状梳理及职责交接 <span style="color:#b42318">★</span></td>
+                <td>梳理各Country通道清单、用途、余额管理方式、充值流程、当前Owner及主要问题。</td><td class="next">完成首批业务国现状盘点，明确交接范围及优先级，再按国逐步移交日常管理及预测逻辑。</td>
+                <td class="owner">张堉</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="未启动">
+                <td class="theme">4.2 业务通道资金管理机制</td>
+                <td>在职责交接基础上，建立业务预测、通道余额、安全余额、充值需求及异常预警的统一管理逻辑，并明确BP与Treasury的固定交互机制。</td><td class="next">现状及交接清晰后形成统一管理指引。</td>
+                <td class="owner">Finance BP / Treasury</td><td class="pace">11月</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lv2">
+            <div class="module-head">
+              <div>
+                <div class="module-title">5. 税务与法定合规</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">Tax职能正在共享化，但BP在申报协调、税审、监管资料及重大业务变化中的参与方式仍不统一；不同事项需要Finance BP承担的Country协调责任也未完全明确。</div>
+              </div>
+              <div class="count-badge">3 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="未启动">
+                <td class="theme">5.1 税务及合规协作</td>
+                <td>明确Local Finance负责什么、Tax负责什么、BP需要Review和推动什么；包括申报日历、资料提供、异常事项及Country层面跟进。</td><td class="next">结合Tax共享化后的实际流程，梳理各Country高频日常事项及Target协作方式。</td>
+                <td class="owner">Tax / Finance BP / Local Finance</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr><tr data-status="未启动">
+                <td class="theme">5.2 业务税务评审</td>
+                <td>明确哪些业务变化必须提前触发Tax：新业务、新主体、跨境交易、资方/通道结构、新收费模式及重大合同等，并明确Finance BP的信息输入责任。</td><td class="next">与Tax共同形成业务变化Tax Review场景清单和交互方式。</td>
+                <td class="owner">Tax + Finance BP</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr><tr data-status="未启动">
+                <td class="theme">5.3 重大税务及监管事项管理</td>
+                <td>对税审、重大税务争议、监管申报异常、历史遗留事项等建立Country层面的跟踪和升级机制，明确BP的协调、影响评估和管理层同步职责。</td><td class="next">整理现有重大事项管理方式，后续形成统一跟踪口径。</td>
+                <td class="owner">Tax / Finance BP</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+      </section><section class="detail-group lv3">
+        <div class="group-title">业务与经营管理</div><div class="group-desc">逐步从事务响应转向 Business Partner、预测和经营分析</div>
+        
+          <section class="module-card lv3">
+            <div class="module-head">
+              <div>
+                <div class="module-title">6. 业务协同与重大经营事项财务评审</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">Finance目前较多按单Country、单Case参与业务事项，介入时点和评审范围不统一，容易停留在资金、税务等单点判断。</div>
+              </div>
+              <div class="count-badge">2 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="未启动">
+                <td class="theme">6.1 跨部门财务协作及介入机制</td>
+                <td>梳理BP与BIZ、BD、金融运营、总办等高频交互事项，明确Finance介入场景、所需信息及反馈机制。</td><td class="next">先形成主要跨部门交互事项清单和Finance Trigger。</td>
+                <td class="owner">Finance BP</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr><tr data-status="未启动">
+                <td class="theme">6.2 新业务及重大经营事项财务评审</td>
+                <td>对新业务、新产品/包、新供应商、重大合同、收费/定价、通道及交易结构变化，从Business Model、盈利性、资金结算、Accounting、Tax等整体评估。</td><td class="next">建立统一Finance Review框架及基础Business Case模板。</td>
+                <td class="owner">Finance BP / Tax / Treasury</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lv3">
+            <div class="module-head">
+              <div>
+                <div class="module-title">7. 预算预测与经营分析</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">经营分析目前更多由BI主导，Finance在成本、风险成本、盈利及Forecast方面缺少统一的数据底座和方法；各BP模型也较分散。</div>
+              </div>
+              <div class="count-badge">2 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">7.1 成本分析体系 <span style="color:#b42318">★</span></td>
+                <td>Finance所需业务及成本数据源；核心Driver及指标口径；Cost Structure，Unit Cost等</td><td class="next">已开通各国BI成本报表以及系统权限，进一步开展成本项分析</td>
+                <td class="owner">王颖</td><td class="pace">11月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr><tr data-status="未启动">
+                <td class="theme">7.2 预测及管理报告机制</td>
+                <td>统一Rolling Forecast、Actual vs Forecast及月度Management Reporting机制，将分析结果用于经营建议和资源配置。</td><td class="next">在成本/盈利分析基础上逐步搭建标准Forecast及管报机制。</td>
+                <td class="owner">Finance BP</td><td class="pace">明年</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+      </section><section class="detail-group lvh">
+        <div class="group-title">横向运营机制</div><div class="group-desc">贯穿三层能力建设的持续机制</div>
+        
+          <section class="module-card lvh">
+            <div class="module-head">
+              <div>
+                <div class="module-title">8. 业务国财务专题分享 / Country Deep Dive</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">各Country的业务模式、主体架构、财务运营方式、税务监管及历史问题仍主要掌握在对应BP个人手中，团队缺少系统性的横向认知。</div>
+              </div>
+              <div class="count-badge">1 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">8.1 Country Deep Dive <span style="color:#b42318">★</span></td>
+                <td>每个业务国覆盖七项：①业务及主体架构；②收入与成本模式；③核算及报表口径；④资金及通道结构；⑤税务与监管重点；⑥当前主要财务风险；⑦业务国特殊处理及历史遗留事项。</td><td class="next">确定统一模板、五个业务国分享顺序及更新Owner，启动首个业务国分享。</td>
+                <td class="owner">Bella统筹 / Country BP</td><td class="pace">10月</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lvh">
+            <div class="module-head">
+              <div>
+                <div class="module-title">9. Finance BP专项专题分享</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">各BP在资方、通道、供应商、新业务、监管等事项中积累了大量经验，但多数停留在单Country或单Case，同类问题存在重复研究。</div>
+              </div>
+              <div class="count-badge">1 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="未启动">
+                <td class="theme">9.1 Finance BP专题分享及案例沉淀</td>
+                <td>资方、通道、供应商及成本、新业务及交易结构、监管等高频主题；统一处理原则；Country差异；Best Practice及典型Case。</td><td class="next">确定首批专题及分享Owner，结合实际Case开展分享并沉淀复用材料。</td>
+                <td class="owner">Bella / Topic Owner</td><td class="pace">Q4</td>
+                <td class="status-cell"><span class="status st-idle">未启动</span></td></tr></tbody>
+            </table></div>
+          </section>
+          <section class="module-card lvh">
+            <div class="module-head">
+              <div>
+                <div class="module-title">10. 财务系统及工具专项优化</div>
+                <div class="issue-label">目前情况 / 共性问题</div><div class="issue">目前财务系统及流程优化需求受研发资源限制搁置；各Country日常还持续出现新的系统、数据及流程问题。</div>
+              </div>
+              <div class="count-badge">1 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody><tr data-status="进行中">
+                <td class="theme">10.1 财务系统及工具优化管理 <span style="color:#b42318">★</span></td>
+                <td>财务系统及工具需求归集；按业务影响、风险、效率提升及实施难度排序；系统开发与轻量化工具两条路径。</td><td class="next">汇总固定资产、成本报表、预算系统等现有需求，按Quick Win / 系统开发 / 暂缓分类并明确Owner。</td>
+                <td class="owner">陈媛 / 各需求Owner</td><td class="pace">持续</td>
+                <td class="status-cell"><span class="status st-live">进行中</span></td></tr></tbody>
+            </table></div>
+          </section>
+      </section>
+        </div>
+      </details>
+    </section></div>
+
+  <details class="console" open="">
+    <summary>用 Excel 更新本看板</summary>
+    <div class="console-in">
+      <ol>
+        <li>在《海外财务BP管理体系建设_项目看板数据源.xlsx》里维护三个核心页签：主题清单、第一阶段重点、双周更新。</li>
+        <li>每个页签<b>选中含表头的整个区域</b>复制，粘贴到下面对应的框（留空则沿用上次内容）。</li>
+        <li>填写期数与更新日期，点「更新看板」。框架、明细、统计数字都会跟着「主题清单」自动重算。</li>
+        <li>更新完成后，点击<b>「导出当前看板 HTML」</b>保存一份已写入最新数据的独立文件；后续可直接归档、转发或上传到固定链接。</li>
+        <li>如需 PDF，可 Ctrl+P 存成 PDF，<b>务必勾选「背景图形」</b>，否则渐变与色块会印成全白。</li>
+      </ol>
+      <div class="fields">
+        <input id="f-period" placeholder="期次，如：BW01">
+        <input id="f-date" placeholder="更新日期，如：2026-09-08">
+        <input id="f-lead" placeholder="一句话总述（显示在标题下方）">
+      </div>
+      <div class="grid3">
+        <div><label>① 主题清单</label><textarea id="t-themes" placeholder="粘贴「主题清单」含表头区域"></textarea></div>
+        <div><label>② 第一阶段重点</label><textarea id="t-phase" placeholder="粘贴「第一阶段重点」含表头区域"></textarea></div>
+        <div><label>③ 双周更新</label><textarea id="t-bi" placeholder="粘贴「双周更新」含表头区域"></textarea></div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="btn-go">更新看板</button>
+        <button class="btn btn-ghost" id="btn-export">导出当前看板 HTML</button>
+        <button class="btn btn-ghost" id="btn-reset">恢复内置内容</button>
+        <span class="msg ok" id="msg">已更新：主题 20 个、本阶段重点 7 项、双周记录 7 条。</span>
+      </div>
+    </div>
+  </details>
+</div>
+
+<script>
+/* ============================================================
+   内置初始内容。每期通过底部控制台从 Excel 粘贴更新，无需改代码。
+   ============================================================ */
+const LAYERS = [
+  {key:"第一层", name:"基础财务治理", sub:"先建立统一、稳定、可复制的财务管理底座"},
+  {key:"第二层", name:"专业职能协同", sub:"在基础治理之上理顺 Finance BP 与专业职能的职责和接口"},
+  {key:"第三层", name:"业务与经营管理", sub:"逐步从事务响应转向 Business Partner、预测和经营分析"}
+];
+
+/* 主题清单：同时驱动第一节框架与第四节明细 */
+const INITIAL_THEMES = [["第一层","1. 财务治理与组织","各Country本地化程度、Local Finance能力及系统成熟度差异较大，BP实际介入深度不一致；Tax、Treasury共享化后，Country财务管理责任及跨团队协作方式需要重新明确。","P1","1.1","业务国财务管理及职能协作机制","BP对业务国财务结果的管理责任；不同成熟度业务国的BP介入模式；BP、Local Finance、Tax、Treasury、报表组的职责边界及协作场景。","盘点各业务国团队配置、BP实际介入事项及跨团队协作场景，输出Country Finance Management Model及职责分工表。","Finance BP","Q4","未启动",""],["第一层","1. 财务治理与组织","","P1","1.2","Country Backup及知识交接管理","建立Country Backup、关键事项交接、历史问题留存及知识沉淀机制，减少业务国信息集中在单一BP或Local Finance个人手中。","依赖8.1 Deep Dive模板落地后同步设计，本阶段不单独启动。","Finance BP","Q4","未启动",""],["第一层","2. 会计核算与财务报告","各Country已有核算SOP，但部分历史规则、同类业务处理及月结Review方式仍有差异；集团层面的统一原则与Country-specific处理边界尚未明确。","P1","2.1","集团核算原则及Country差异管理","收入、成本、预提、应付款冲销、差异调整等核心场景的核算口径；集团统一原则与业务国合理差异的边界；历史规则待更新清单。","汇总各业务国核算原则，输出核心场景差异清单及第一版集团统一核算原则。","董艳/报表组","10月","进行中","Y"],["第一层","2. 会计核算与财务报告","","P1","2.2","月结及财务报告复核机制","月结时间表及分工；报表出具与复核；重点科目及异常事项的BP Review范围。","依赖2.1统一核算原则成型后补充，本阶段不单独启动。","Finance BP / 报表组","10月","未启动",""],["第一层","3. 财务基础内控与运营规范","各业务国在开票、供应商及付款、跨境往来、例外事项及财务档案方面，执行频率、完成时限、资料和审批要求尚未完全统一。后续随时补充。","P0","3.1","开票及票据管理","开票触发、申请人、时点、资料、欠票、红冲/重开及异常事项处理。","优先与BD及各业务国BP梳理现状和差异，形成第一版最低控制要求。","Bella","10月","进行中","Y"],["第一层","3. 财务基础内控与运营规范","","P0","3.2","供应商、付款及费用管理","供应商基础资料、付款申请材料、付款发起节点、固定付款节奏、紧急付款及费用类最低控制标准。","与BD梳理各业务国付款流程及实际问题，明确集团最低标准和Country差异。","Bella","10月","进行中","Y"],["第一层","3. 财务基础内控与运营规范","","P0","3.3","关联方及跨境往来管理","关联方余额及对账；代付；集团借款；跨境结算资料；Tax与Treasury触发要求。","梳理各业务国现有场景，形成基础管理原则及专业团队触发机制。","Rufus","10月","进行中","Y"],["第一层","3. 财务基础内控与运营规范","","P0","3.4","例外事项及财务档案管理","紧急/无票付款、迟交资料、历史调整等例外事项审批和财务资料归档、留痕要求。","汇总各业务国现有例外场景，形成统一Exception及Documentation最低标准。","Finance BP","11月","未启动",""],["第二层","4. 资金及通道管理","银行侧事宜管理已转为资金团队负责，通道的资金管控拟由BIZ逐步转交BP，目前各Country现状和预测逻辑仍在持续梳理中。","P0","4.1","业务通道现状梳理及职责交接","梳理各Country通道清单、用途、余额管理方式、充值流程、当前Owner及主要问题。","完成首批业务国现状盘点，明确交接范围及优先级，再按国逐步移交日常管理及预测逻辑。","张堉","10月","进行中","Y"],["第二层","4. 资金及通道管理","","P0","4.2","业务通道资金管理机制","在职责交接基础上，建立业务预测、通道余额、安全余额、充值需求及异常预警的统一管理逻辑，并明确BP与Treasury的固定交互机制。","现状及交接清晰后形成统一管理指引。","Finance BP / Treasury","11月","未启动",""],["第二层","5. 税务与法定合规","Tax职能正在共享化，但BP在申报协调、税审、监管资料及重大业务变化中的参与方式仍不统一；不同事项需要Finance BP承担的Country协调责任也未完全明确。","P2","5.1","税务及合规协作","明确Local Finance负责什么、Tax负责什么、BP需要Review和推动什么；包括申报日历、资料提供、异常事项及Country层面跟进。","结合Tax共享化后的实际流程，梳理各Country高频日常事项及Target协作方式。","Tax / Finance BP / Local Finance","Q4","未启动",""],["第二层","5. 税务与法定合规","","P2","5.2","业务税务评审","明确哪些业务变化必须提前触发Tax：新业务、新主体、跨境交易、资方/通道结构、新收费模式及重大合同等，并明确Finance BP的信息输入责任。","与Tax共同形成业务变化Tax Review场景清单和交互方式。","Tax + Finance BP","Q4","未启动",""],["第二层","5. 税务与法定合规","","P2","5.3","重大税务及监管事项管理","对税审、重大税务争议、监管申报异常、历史遗留事项等建立Country层面的跟踪和升级机制，明确BP的协调、影响评估和管理层同步职责。","整理现有重大事项管理方式，后续形成统一跟踪口径。","Tax / Finance BP","Q4","未启动",""],["第三层","6. 业务协同与重大经营事项财务评审","Finance目前较多按单Country、单Case参与业务事项，介入时点和评审范围不统一，容易停留在资金、税务等单点判断。","P1","6.1","跨部门财务协作及介入机制","梳理BP与BIZ、BD、金融运营、总办等高频交互事项，明确Finance介入场景、所需信息及反馈机制。","先形成主要跨部门交互事项清单和Finance Trigger。","Finance BP","Q4","未启动",""],["第三层","6. 业务协同与重大经营事项财务评审","","P1","6.2","新业务及重大经营事项财务评审","对新业务、新产品/包、新供应商、重大合同、收费/定价、通道及交易结构变化，从Business Model、盈利性、资金结算、Accounting、Tax等整体评估。","建立统一Finance Review框架及基础Business Case模板。","Finance BP / Tax / Treasury","Q4","未启动",""],["第三层","7. 预算预测与经营分析","经营分析目前更多由BI主导，Finance在成本、风险成本、盈利及Forecast方面缺少统一的数据底座和方法；各BP模型也较分散。","P2","7.1","成本分析体系","Finance所需业务及成本数据源；核心Driver及指标口径；Cost Structure，Unit Cost等","已开通各国BI成本报表以及系统权限，进一步开展成本项分析","王颖","11月","进行中","Y"],["第三层","7. 预算预测与经营分析","","P2","7.2","预测及管理报告机制","统一Rolling Forecast、Actual vs Forecast及月度Management Reporting机制，将分析结果用于经营建议和资源配置。","在成本/盈利分析基础上逐步搭建标准Forecast及管报机制。","Finance BP","明年","未启动",""],["横向","8. 业务国财务专题分享 / Country Deep Dive","各Country的业务模式、主体架构、财务运营方式、税务监管及历史问题仍主要掌握在对应BP个人手中，团队缺少系统性的横向认知。","P1","8.1","Country Deep Dive","每个业务国覆盖七项：①业务及主体架构；②收入与成本模式；③核算及报表口径；④资金及通道结构；⑤税务与监管重点；⑥当前主要财务风险；⑦业务国特殊处理及历史遗留事项。","确定统一模板、五个业务国分享顺序及更新Owner，启动首个业务国分享。","Bella统筹 / Country BP","10月","进行中","Y"],["横向","9. Finance BP专项专题分享","各BP在资方、通道、供应商、新业务、监管等事项中积累了大量经验，但多数停留在单Country或单Case，同类问题存在重复研究。","P2","9.1","Finance BP专题分享及案例沉淀","资方、通道、供应商及成本、新业务及交易结构、监管等高频主题；统一处理原则；Country差异；Best Practice及典型Case。","确定首批专题及分享Owner，结合实际Case开展分享并沉淀复用材料。","Bella / Topic Owner","Q4","未启动",""],["横向","10. 财务系统及工具专项优化","目前财务系统及流程优化需求受研发资源限制搁置；各Country日常还持续出现新的系统、数据及流程问题。","P1","10.1","财务系统及工具优化管理","财务系统及工具需求归集；按业务影响、风险、效率提升及实施难度排序；系统开发与轻量化工具两条路径。","汇总固定资产、成本报表、预算系统等现有需求，按Quick Win / 系统开发 / 暂缓分类并明确Owner。","陈媛 / 各需求Owner","持续","进行中","Y"]];
+
+/* 第一阶段重点：收敛为四件 */
+const INITIAL_PHASE = [["纵向模块","P0","财务基础内控与运营规范","3.1 / 3.2","开票、供应商及付款管理","已从与BD的日常交互中识别出各Country在开票时点、付款申请节点、付款节奏及资料要求上的差异。","逐国梳理现状，明确开票与付款的触发、申请人、时限、资料要求及紧急付款处理，形成第一版集团最低控制要求。","Bella","10月出具相关管理制度","进行中","Y"],["纵向模块","P1","财务基础内控与运营规范","3.3","关联方及跨境往来管理","各业务国跨境撤资较为频繁，一直都是单次沟通，缺少统一的制度要求","梳理各业务国场景，结合香港及新加坡税筹情况，形成基础管理原则","Rufus","10月形成一版管理原则","进行中","Y"],["纵向模块","P1","会计核算与财务报告","2.1","集团核算原则及业务国差异梳理","各Country已有核算SOP，但核心处理仍有差异，历史规则也需重新确认。","横向Review现有SOP，形成核心场景差异清单，并区分集团必须统一 / Country合理差异 / 历史规则待更新三类。","董艳","10月统一一版核算整体原则","进行中","Y"],["纵向模块","P0","资金及通道管理","4.1","业务通道现状梳理及BIZ→BP交接","各Country通道清单、余额管理方式、充值逻辑、预测方法及数据来源尚未形成统一视图，交接范围和节奏待定。","按Country盘点通道现状并形成统一视图；同步理解BIZ现有预测逻辑，分国逐步完成职责交接。","张堉","持续交接中","进行中","Y"],["纵向模块","P1","预算预测与经营分析","7.1","成本分析体系","已开通各国BI成本报表以及系统权限","进一步针对部分成本项开展分析","王颖","已启动","进行中","Y"],["横向机制","P1","业务国财务专题分享 / Country Deep Dive","8.1","统一模板及首批业务国分享","各Country业务、财务运营、资金通道、税务监管及历史问题仍集中在对应BP个人手中，团队缺少横向认知。","先确定统一Deep Dive模板与5个业务国分享顺序，启动首个Country分享，并沉淀为可持续更新的知识库。","Bella统筹 / Finance BP","10月启动，每2周1个Country","进行中","Y"],["横向机制","P1","财务系统及工具优化管理","10.1","重启财务系统及流程优化需求","目前已提出的财务系统及流程优化需求受研发资源限制搁置","重新盘点目前已有需求，按照重点及难易程度与研发部门统一对接排期","陈媛","9月重新启动","进行中","Y"]];
+
+/* 双周更新 */
+const INITIAL_BI = [["","","财务基础内控与运营规范","开票、供应商及付款管理","目前已完成各国开票合规要求及付款流程梳理，厘清各业务国目前付款过程存在的问题","根据各业务国现状，输出关于付款管理统一的内控方案，形成发票和付款的基本制度输出给各使用方","","Bella","进行中","Y"],["","","财务基础内控与运营规范","关联方及跨境往来管理","目前已开启关联方往来梳理，对香港及BVI之间的关联方往来建账进行了统计，拟出了26年的期初数","跟进关联方数据的整理，将新加坡关联方的期初数整理清楚。同步开启netsuite系统中的关联方的setup，以及业务国主体的应收应付整理工作","","Rufus","进行中","Y"],["","","会计核算与财务报告","各国核算SOP复核及差异清单","已完成科目映射及集团核算规则初稿","向各业务国收集核算规则差异","需要业务国BP填写核算规则","董艳","进行中","Y"],["","","资金及通道管理","业务通道梳理","目前各业务国通道按周度进行撤资及充值，各业务国优先梳理充值能力（路径、额度、时效）以及本地银行账户可承接资金量级","各业务国形成各自的本地通道资金规则","各业务国BP各自梳理原则","张堉","进行中","Y"],["","","预算预测与经营分析","成本分析体系","后台数据权限已完成开通","预计10月中旬起开始进行成本分析动作","","王颖","进行中","Y"],["","","业务国财务专题分享","统一模板及首批Country分享","已完成业务国分享排期以及分享重点内容沟通","10.14菲律宾做首个业务国分享，后续每两周分享一个业务国","","Bella统筹 / Finance BP","进行中","Y"],["","","财务系统及工具优化管理","重启财务系统及流程优化需求","受开发资源限制，近期策略以优先保障线上稳定性、修复 Bug 为主。 9月29日已完成退还款流程修复，已恢复正常查看","10月交付：成本报表异步下载优化、发票/流水明细显示优化及欠票管理流程； 11月推进成本报表数据改造与固定资产模块\"","","陈媛","进行中","Y"]];
+
+let META = {"period":"BW01","date":"2026-10-6","lead":"以「基础财务治理 → 专业职能协同 → 业务与经营管理」三层能力递进为主线，逐步完善海外财务BP管理体系。\n横向通过 Country Deep Dive、Finance BP 专题分享及系统工具优化持续沉淀，推动标准化、知识复用与效率提升。"};
+
+/* ==================== 渲染 ==================== */
+const esc = s => String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const stCls = s => { const x=String(s||"");
+  if(x.includes("进行")) return "st-live";
+  if(x.includes("完成")) return "st-done";
+  if(x.includes("受阻")) return "st-block";
+  return "st-idle"; };
+const isY = v => String(v||"").trim().toUpperCase()==="Y";
+const BARS = ["#b42318","#b42318","#8f5400","#2f5e9f","#147a57","#6941c6"];
+
+function group(themes){
+  const out = {};
+  themes.forEach(t=>{
+    const [layer,mod,issue,prio,tid,name,cover,next,owner,pace,status,hot] = t;
+    out[layer] = out[layer] || {};
+    out[layer][mod] = out[layer][mod] || {issue:"", prio:prio||"", list:[]};
+    if(issue && !out[layer][mod].issue) out[layer][mod].issue = issue;
+    if(prio && !out[layer][mod].prio) out[layer][mod].prio = prio;
+    out[layer][mod].list.push({tid,name,cover,next,owner,pace,status,hot:isY(hot)});
+  });
+  return out;
+}
+
+function render(){
+  const G = group(THEMES);
+  const totalT = THEMES.length;
+  const live = THEMES.filter(t=>String(t[10]||"").includes("进行")).length;
+
+  /* 一、框架 */
+  const modBox = (mod,o) => `
+    <div class="mini">
+      <div class="mini-top"><div class="mini-name">${esc(mod)}</div><span class="tag ${(o.prio||"").toLowerCase()||"p2"}">${esc(o.prio||"—")}</span></div>
+      <ul>${o.list.map(i=>`<li class="${i.hot?"hot":""}"><span class="tid">${esc(i.tid)}</span><span>${esc(i.name)}${i.hot?" ★":""}</span></li>`).join("")}</ul>
+    </div>`;
+
+  const stages = LAYERS.map(l=>{
+    const mods = G[l.key] || {};
+    return `<div class="stage">
+      <div class="stage-kicker">${esc(l.key)}</div>
+      <h3>${esc(l.name)}</h3><p>${esc(l.sub)}</p>
+      <div class="mini-list">${Object.entries(mods).map(([m,o])=>modBox(m,o)).join("")}</div>
+    </div>`;
+  }).join('<div class="arr"><span>→</span></div>');
+
+  const hz = G["横向"] || {};
+  const hzHTML = Object.keys(hz).length ? `
+    <div class="horizontal-title">横向运营机制｜贯穿三层能力建设</div>
+    <div class="horizontal">${Object.entries(hz).map(([m,o])=>`<div class="hcard">${modBox(m,o)}</div>`).join("")}</div>` : "";
+
+  /* 二、第一阶段重点 */
+  const phaseHTML = PHASE.filter(r=>!/^n$/i.test(String(r[10]||"Y").trim())).map((r,idx)=>{
+    const [type,prio,mod,ref,action,now,next,owner,pace,status] = r;
+    return `<div class="phase-card">
+      <div class="phase-bar" style="background:${BARS[idx%BARS.length]}"></div>
+      <div class="phase-in">
+        <div class="phase-top">
+          <div><span class="phase-type">${esc(type)}${ref?" · "+esc(ref):""}</span> <span class="tag ${(prio||"").toLowerCase()||"p2"}">${esc(prio)}</span></div>
+          <span class="status ${stCls(status)}">${esc(status)}</span>
+        </div>
+        <h3>${esc(action)}</h3>
+        <div class="phase-action">${esc(mod)}</div>
+        <div class="phase-row"><div class="phase-label">目前情况</div><div class="phase-value">${esc(now)}</div></div>
+        <div class="phase-row"><div class="phase-label">下一步</div><div class="phase-value">${esc(next)}</div></div>
+        <div class="phase-bottom"><span class="chip">Owner：${esc(owner)}</span><span class="chip hot">${esc(pace)}</span></div>
+      </div>
+    </div>`;
+  }).join("");
+
+  /* 三、双周更新 */
+  const synced = BI.filter(r=>!/^n$/i.test(String(r[9]||"Y").trim()));
+  const periods = [...new Set(synced.map(r=>r[0]).filter(Boolean))];
+  const latest = periods[periods.length-1] || "";
+  const rows = latest ? synced.filter(r=>r[0]===latest) : synced;
+  const needs = rows.filter(r=>String(r[6]||"").trim());
+  const needsHTML = needs.length ? `
+    <div class="needs">
+      <div class="needs-t">需协同 / 待确认（${needs.length} 项）</div>
+      <ul>${needs.map(r=>`<li><b>${esc(r[3])}</b>　${esc(r[6])}　<span style="color:#98564f">— ${esc(r[7])}</span></li>`).join("")}</ul>
+    </div>` : "";
+  const biHTML = rows.length ? `
+    ${needsHTML}
+    <div class="bi-wrap"><table class="bi-table">
+      <thead><tr><th>重点模块 / Action</th><th>本双周完成 / 关键进展</th><th>下双周计划</th><th>Owner</th><th>Status</th></tr></thead>
+      <tbody>${rows.map(r=>`<tr>
+        <td><b>${esc(r[2])}</b><br><span style="color:#667085">${esc(r[3])}</span></td>
+        <td>${esc(r[4])}</td><td>${esc(r[5])}</td><td>${esc(r[7])}</td>
+        <td><span class="status ${stCls(r[8])}">${esc(r[8])}</span></td></tr>`).join("")}</tbody>
+    </table></div>` : `<div style="padding:18px;color:#667085;font-size:12.5px">暂无双周更新记录。</div>`;
+
+  /* 四、明细 */
+  const LCLS = {"第一层":"lv1","第二层":"lv2","第三层":"lv3","横向":"lvh"};
+  const groupsHTML = [...LAYERS.map(l=>[l.key,l.name,l.sub]), ["横向","横向运营机制","贯穿三层能力建设的持续机制"]]
+    .map(([key,name,sub])=>{
+      const mods = G[key]; if(!mods) return "";
+      const lc = LCLS[key] || "lvh";
+      return `<section class="detail-group ${lc}">
+        <div class="group-title">${esc(name)}</div><div class="group-desc">${esc(sub)}</div>
+        ${Object.entries(mods).map(([m,o])=>`
+          <section class="module-card ${lc}">
+            <div class="module-head">
+              <div>
+                <div class="module-title">${esc(m)}</div>
+                ${o.issue?`<div class="issue-label">目前情况 / 共性问题</div><div class="issue">${esc(o.issue)}</div>`:""}
+              </div>
+              <div class="count-badge">${o.list.length} 个管理主题</div>
+            </div>
+            <div class="table-wrap"><table>
+              <thead><tr><th>管理主题</th><th>具体涵盖内容</th><th>下一步计划</th><th>Owner</th><th>节奏 / 目标</th><th>Status</th></tr></thead>
+              <tbody>${o.list.map(i=>`<tr data-status="${esc(i.status)}">
+                <td class="theme">${esc(i.tid)} ${esc(i.name)}${i.hot?' <span style="color:#b42318">★</span>':""}</td>
+                <td>${esc(i.cover)}</td><td class="next">${esc(i.next)}</td>
+                <td class="owner">${esc(i.owner)}</td><td class="pace">${esc(i.pace)}</td>
+                <td class="status-cell"><span class="status ${stCls(i.status)}">${esc(i.status)}</span></td></tr>`).join("")}</tbody>
+            </table></div>
+          </section>`).join("")}
+      </section>`;
+    }).join("");
+
+  document.getElementById("board").innerHTML = `
+    <section class="hero">
+      <h1>海外财务BP管理体系建设｜项目看板</h1>
+      <p class="hero-lead">${String(META.lead).split("\n").map(x=>`<span class="lead-line">${esc(x)}</span>`).join("")}</p>
+      <div class="meta">
+        <span>期次 <b>${esc(META.period)}</b></span>
+        <span>更新至 <b>${esc(META.date)}</b></span>
+        <span>纵向 <b>7</b> 模块 + 横向 <b>3</b> 机制</span>
+        <span>管理主题 <b>${totalT}</b> 个</span>
+        <span>进行中 <b>${live}</b> 个</span>
+        <span>本阶段重点 <b>${PHASE.length}</b> 项</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>一、整体建设框架</h2>
+        <div class="legend">纵向能力递进，横向机制贯穿三层　|　<span class="tag p0">P0</span><span class="tag p1">P1</span><span class="tag p2">P2</span>　<span style="color:#b42318;font-weight:700">★</span> 第一阶段涉及主题</div>
+      </div>
+      <div class="framework">${stages}</div>
+      ${hzHTML}
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>二、第一阶段推进计划（基准计划）</h2>
+        <div class="section-note">已明确第一阶段重点事项、Owner及目标节奏；后续仅在基准计划发生变化时调整</div>
+      </div>
+      <details class="detail-shell phase-shell">
+        <summary>点击展开查看第一阶段基准计划<span class="hint">共 ${PHASE.length} 项重点事项</span></summary>
+        <div class="detail-inner">
+          <div class="phase-grid">${phaseHTML}</div>
+        </div>
+      </details>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>三、最新双周进展</h2>
+        <div class="section-note">只展示最新一期需要同步至看板的关键进展；历史记录保留在 Excel 中</div>
+      </div>
+      <div class="bi-box">
+        <div class="bi-head">
+          <div class="bi-title">最新双周更新${latest?" · "+esc(latest):""}</div>
+          <div class="bi-meta">${rows.length?"更新时间："+esc(rows[rows.length-1][1]||META.date):""}</div>
+        </div>
+        ${biHTML}
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><h2>四、项目推进明细</h2>
+        <div class="section-note">共性问题只保留背景，不放单个 Case；每期不一定变动，默认收起</div>
+      </div>
+      <details class="detail-shell">
+        <summary>展开全部 ${totalT} 个管理主题<span class="hint">按层级与模块分组，含涵盖内容、下一步、Owner、节奏与状态</span></summary>
+        <div class="detail-inner">
+          <div class="toolbar">
+            <button class="filter active" data-filter="all">全部状态</button>
+            <button class="filter" data-filter="进行中">进行中</button>
+            <button class="filter" data-filter="未启动">未启动</button>
+            <button class="filter" data-filter="已完成">已完成</button>
+            <button class="filter" data-filter="受阻">受阻</button>
+          </div>
+          ${groupsHTML}
+        </div>
+      </details>
+    </section>`;
+
+  bindFilter();
+}
+
+function bindFilter(){
+  const btns = document.querySelectorAll(".filter");
+  btns.forEach(b=>b.addEventListener("click",()=>{
+    btns.forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    const t = b.dataset.filter;
+    document.querySelectorAll(".module-card tbody tr").forEach(tr=>{
+      tr.style.display = (t==="all" || tr.dataset.status===t) ? "" : "none";
+    });
+  }));
+}
+
+/* ==================== Excel 粘贴解析 ==================== */
+function parseTSV(raw){
+  const lines = raw.replace(/\r/g,"").split("\n").filter(l=>l.trim());
+  if(lines.length<2) return [];
+  const head = lines[0].split("\t").map(h=>h.trim());
+  return lines.slice(1).map(l=>{
+    const v = l.split("\t"); const o={};
+    head.forEach((h,i)=>o[h]=(v[i]??"").trim());
+    return o;
+  }).filter(o=>Object.values(o).some(x=>x));
+}
+const g = (o,...names)=>{ for(const n of names){ if(o[n]!==undefined && o[n]!=="") return o[n]; } return ""; };
+
+let THEMES = INITIAL_THEMES, PHASE = INITIAL_PHASE, BI = INITIAL_BI;
+try{
+  const s = JSON.parse(localStorage.getItem("finBPBoardExport_BW01_2026-10-6")||"null");
+  if(s){ THEMES=s.themes||THEMES; PHASE=s.phase||PHASE; BI=s.bi||BI; META=s.meta||META; }
+}catch(e){}
+render();
+
+document.getElementById("btn-go").addEventListener("click",()=>{
+  const msg = document.getElementById("msg");
+  try{
+    const rt = document.getElementById("t-themes").value.trim();
+    const rp = document.getElementById("t-phase").value.trim();
+    const rb = document.getElementById("t-bi").value.trim();
+    if(rt){
+      const rows = parseTSV(rt);
+      const mapped = rows.map(o=>[
+        g(o,"层级"), g(o,"模块"), g(o,"共性问题","目前情况 / 共性问题"), g(o,"优先级"),
+        g(o,"主题编号","编号"), g(o,"管理主题","主题"), g(o,"具体涵盖内容","涵盖内容"),
+        g(o,"下一步计划","下一步"), g(o,"Owner","负责人"), g(o,"节奏 / 目标","节奏","目标时点"),
+        g(o,"Status","状态"), g(o,"第一阶段重点","本阶段重点")
+      ]).filter(r=>r[0]&&r[1]);
+      if(!mapped.length) throw new Error("主题清单缺少「层级」或「模块」列");
+      THEMES = mapped;
+    }
+    if(rp){
+      PHASE = parseTSV(rp).map(o=>[
+        g(o,"类型"), g(o,"优先级"), g(o,"重点模块","模块"), g(o,"对应主题","主题编号"),
+        g(o,"当前重点 / Action","当前重点"), g(o,"目前情况 / 本期进展","目前情况"),
+        g(o,"下一步计划","下一步"), g(o,"Owner"), g(o,"目标时点 / 节奏","目标时点"),
+        g(o,"Status","状态"), g(o,"显示","是否显示")
+      ]).filter(r=>r[4]);
+    }
+    if(rb){
+      BI = parseTSV(rb).map(o=>[
+        g(o,"更新期次","期次"), g(o,"更新时间"), g(o,"重点模块","模块"),
+        g(o,"当前重点 / Action","当前重点"), g(o,"本双周完成 / 关键进展","本双周完成"),
+        g(o,"下双周计划"), g(o,"需协同 / 待确认事项","需协同 / 待确认","需协同"),
+        g(o,"Owner"), g(o,"Status","状态"), g(o,"是否同步至看板","是否同步")
+      ]).filter(r=>r[2]);
+    }
+    const p=document.getElementById("f-period").value.trim();
+    const d=document.getElementById("f-date").value.trim();
+    const l=document.getElementById("f-lead").value.trim();
+    if(p) META.period=p;
+    if(d) META.date=d;
+    if(l) META.lead=l;
+
+    render();
+    try{ localStorage.setItem("finBPBoardExport_BW01_2026-10-6",JSON.stringify({themes:THEMES,phase:PHASE,bi:BI,meta:META})); }catch(e){}
+    msg.className="msg ok";
+    msg.textContent=`已更新：主题 ${THEMES.length} 个、本阶段重点 ${PHASE.length} 项、双周记录 ${BI.length} 条。`;
+    window.scrollTo({top:0,behavior:"smooth"});
+  }catch(err){
+    msg.className="msg err";
+    msg.textContent="解析失败："+err.message+"（请确认复制时包含了表头行）";
+  }
+});
+
+
+function safeFilePart(s){
+  return String(s||"").trim()
+    .replace(/[\\/:*?"<>|]+/g,"-")
+    .replace(/\s+/g,"_")
+    .replace(/^-+|-+$/g,"") || "未命名";
+}
+
+document.getElementById("btn-export").addEventListener("click",()=>{
+  const msg = document.getElementById("msg");
+  try{
+    // 以当前 HTML 为模板，把最新内存数据真正写回文件中，
+    // 导出后不依赖当前浏览器 localStorage。
+    let html = "<!doctype html>\\n" + document.documentElement.outerHTML;
+
+    const themesJSON = JSON.stringify(THEMES);
+    const phaseJSON  = JSON.stringify(PHASE);
+    const biJSON     = JSON.stringify(BI);
+    const metaJSON   = JSON.stringify(META);
+
+    html = html.replace(
+      /const INITIAL_THEMES = \[.*?\];/s,
+      "const INITIAL_THEMES = " + themesJSON + ";"
+    );
+    html = html.replace(
+      /const INITIAL_PHASE = \[.*?\];/s,
+      "const INITIAL_PHASE = " + phaseJSON + ";"
+    );
+    html = html.replace(
+      /const INITIAL_BI = \[.*?\];/s,
+      "const INITIAL_BI = " + biJSON + ";"
+    );
+    html = html.replace(
+      /let META = \{.*?\};/s,
+      "let META = " + metaJSON + ";"
+    );
+
+    // 为导出的文件生成独立缓存 key，避免被旧版缓存覆盖。
+    const exportKey = "finBPBoardExport_" +
+      safeFilePart(META.period) + "_" + safeFilePart(META.date);
+    html = html.replace(/finBPBoardExport_BW01_2026-10-6/g, exportKey);
+
+    // 若当前版本已被再次导出，则同步替换上一次导出 key。
+    html = html.replace(/finBPBoardExport_[A-Za-z0-9_\-]+/g, exportKey);
+
+    const blob = new Blob([html], {type:"text/html;charset=utf-8"});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    const period = safeFilePart(META.period);
+    const date = safeFilePart(META.date);
+    a.href = url;
+    a.download = `海外财务BP管理体系建设_项目看板_${period}_${date}.html`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url), 1000);
+
+    msg.className="msg ok";
+    msg.textContent="已导出当前看板 HTML，最新数据已写入文件。";
+  }catch(err){
+    msg.className="msg err";
+    msg.textContent="导出失败："+err.message;
+  }
+});
+
+document.getElementById("btn-reset").addEventListener("click",()=>{
+  try{ localStorage.removeItem("finBPBoardExport_BW01_2026-10-6"); }catch(e){}
+  THEMES=INITIAL_THEMES; PHASE=INITIAL_PHASE; BI=INITIAL_BI;
+  META={period:"BW01", date:"2026-10-05",
+    lead:"以「基础财务治理 → 专业职能协同 → 业务与经营管理」三层能力递进为主线，逐步完善海外财务BP管理体系。\n横向通过 Country Deep Dive、Finance BP 专题分享及系统工具优化持续沉淀，推动标准化、知识复用与效率提升。"};
+  ["t-themes","t-phase","t-bi","f-period","f-date","f-lead"].forEach(id=>document.getElementById(id).value="");
+  render();
+  document.getElementById("msg").className="msg";
+  document.getElementById("msg").textContent="已恢复内置初始内容。";
+});
+</script>
+
+
+</body></html>
